@@ -1,17 +1,29 @@
 import React,{Component} from 'react'
 import './login.less'
 import logo from './images/logo.png'
-import {Form, Input, Button} from 'antd';
+import {Form, Input, Button,message} from 'antd';
 import { UserOutlined, LockOutlined } from '@ant-design/icons';
+import {reqLogin} from '../../api'
+import memoryUtils from '../../utils/memoryUtils'
+import storageUtils from '../../utils/storageUtils'
+import {Redirect} from 'react-router-dom'
 
 class Login extends Component{
-    handleSubmit=(err,values)=>{
-        // event.preventDefault();
-
-        // const form = this.props.form
-        // const values = form.getFieldsValue()
-        console.log(err)
-        console.log(values)
+    handleSubmit= async (values)=>{
+        const {username,password} = values
+        const result = await reqLogin(username,password)
+        // const result = response.data
+        if(result.status===0){
+            message.success('Login Successfully')
+            // console.log(result.data.username)
+            const user = result.data
+            memoryUtils.user = user
+            storageUtils.saveUser(user)
+            // no need to go back to login
+            this.props.history.replace('/')
+        }else{
+            message.error(result.msg)
+        }
     }
     // validatePwd =(rule,value,callback)=>{
     //     if(!value){
@@ -28,6 +40,10 @@ class Login extends Component{
     // }
     render(){
         // const {getFieldDecorator} = this.props.form
+        const user = memoryUtils.user
+        if(user && user._id){
+            return <Redirect to="/"/>
+        }
         return(
             <div className="login">
                 <header className="login-header">
