@@ -4,12 +4,12 @@ import {Link,withRouter} from 'react-router-dom'
 import logo from '../../assets/iamges/logo.png'
 import { Menu } from 'antd';
 import {
-  AppstoreOutlined,
-  MenuUnfoldOutlined,
-  MenuFoldOutlined,
+//   AppstoreOutlined,
+//   MenuUnfoldOutlined,
+//   MenuFoldOutlined,
   PieChartOutlined,
-  DesktopOutlined,
-  InboxOutlined,
+//   DesktopOutlined,
+//   InboxOutlined,
   MailOutlined,
 } from '@ant-design/icons';
 import menuList from '../../config/menuConfig'

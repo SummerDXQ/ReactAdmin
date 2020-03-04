@@ -1,6 +1,7 @@
 // handle error
 import axios from 'axios'
 import {message} from 'antd'
+// data={key:value}中的key会成为请求的参数名(接口需要的参数名)，value是请求的参数值
 export default function ajax(url,data={},method='GET'){
     return new Promise((resolve,reject)=>{
         let promise;

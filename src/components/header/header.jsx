@@ -3,10 +3,10 @@ import './header.less'
 import {formateDate} from '../../utils/dateUtils'
 import memoryUtils from '../../utils/memoryUtils'
 import storageUtils from '../../utils/storageUtils'
-import {reqWeather} from '../../api/index'
+// import {reqWeather} from '../../api/index'
 import {withRouter} from 'react-router-dom'
 import menulist from '../../config/menuConfig'
-import Item from 'antd/lib/list/Item'
+// import Item from 'antd/lib/list/Item'
 import { Modal } from 'antd';
 import LinkButton from '../link-button/link-button'
 
@@ -68,7 +68,7 @@ class Header extends Component{
         clearInterval(this.intervalID )
     }
     render(){
-        const {currentTime,dayPictureUrl,weather} = this.state;
+        const {currentTime} = this.state;
         const username = memoryUtils.user.username
         const title = this.getTitle()
         return(

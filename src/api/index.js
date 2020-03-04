@@ -1,8 +1,8 @@
 // APT request function
 import ajax from './ajax'
-import jsonp from 'jsonp'
-import { message } from 'antd'
-import axios from 'axios'
+// import jsonp from 'jsonp'
+// import { message } from 'antd'
+// import axios from 'axios'
 
 // Login
 export const reqLogin = (username,password)=>  ajax('/login',{username,password},'POST')
@@ -29,3 +29,13 @@ export const reqUser = (user)=>  ajax('/manage/user/add',user,'POST')
 
 // 4f1daaa213ba487e87892150200303
 // reqWeather('sydney')
+
+
+export const reqAddUser = (user) => ajax('/manage/user/add',user,'POST')
+
+export const reqCategory = (parentId) => ajax('/manage/category/list',{parentId})
+
+export const reqAddCategory = (categoryName,parentId) =>ajax('/manage/category/add',{categoryName,parentId},'POST')
+
+export const reqUpdateCategory = ({categoryId,categoryName}) => ajax('/manage/category/update',{categoryId,categoryName},'POST')
+
